@@ -1,0 +1,8 @@
+{
+  "name": "WordPress Dev Environment",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "wordpress",
+  "workspaceFolder": "/var/www/html/wp-content/themes/your-theme-folder",
+  "forwardPorts": [80],
+  "postCreateCommand": "apt update && apt install -y less"
+}
