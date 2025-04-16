@@ -1,45 +1,26 @@
-<?php
-/**
- * Header file for Callamir Theme
- */
-?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> dir="<?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'rtl' : 'ltr'; ?>">
+<body <?php body_class(); ?> <?php echo get_theme_mod('site_language', 'en') === 'fa' ? 'dir="rtl"' : 'dir="ltr"'; ?>>
     <div class="lang-flags">
-        <?php
-        $lang = isset($_GET['lang']) && $_GET['lang'] === 'fa' ? 'fa' : 'en';
-        $flag_text = get_theme_mod("flag_text_$lang", $lang === 'fa' ? 'زبان‌ها:' : 'Languages:');
-        echo '<span class="flag-text">' . esc_html($flag_text) . '</span>';
-        ?>
-        <a href="#" class="lang-flag-link" data-lang="en"><img src="<?php echo get_template_directory_uri(); ?>/images/uk-flag.png" alt="English"></a>
-        <a href="#" class="lang-flag-link" data-lang="fa"><img src="<?php echo get_template_directory_uri(); ?>/images/iran-flag.png" alt="فارسی"></a>
+        <span class="flag-text"><?php echo esc_html(get_theme_mod('flag_text_' . get_theme_mod('site_language', 'en'), __('Languages:', 'callamir'))); ?></span>
+        <a href="#" class="lang-flag-link" data-lang="en"><img src="<?php echo get_template_directory_uri(); ?>/images/uk-flag.png" alt="<?php _e('English', 'callamir'); ?>"></a>
+        <a href="#" class="lang-flag-link" data-lang="fa"><img src="<?php echo get_template_directory_uri(); ?>/images/iran-flag.png" alt="<?php _e('Persian', 'callamir'); ?>"></a>
     </div>
-    <!-- Navigation -->
-    <div class="nav-menu">
+    <nav class="nav-menu">
         <div class="nav-container">
-            <?php
-            $args = array(
-                'theme_location' => 'primary-menu',
-                'container' => false,
-                'menu_class' => 'nav-menu-items',
-                'depth' => 1,
-                'items_wrap' => '<ul class="%2$s">%3$s</ul>'
-            );
-            if ($lang === 'fa') {
-                $args['menu_order'] = 'desc';
-            }
-            wp_nav_menu($args);
-            ?>
+            <ul class="nav-menu-items">
+                <li><a href="#hero" class="nav-home"><?php echo esc_html(get_theme_mod('menu_home_' . get_theme_mod('site_language', 'en'), __('Home', 'callamir'))); ?></a></li>
+                <li><a href="#subscribe" class="nav-subscribe"><?php echo esc_html(get_theme_mod('menu_subscribe_' . get_theme_mod('site_language', 'en'), __('Subscribe', 'callamir'))); ?></a></li>
+                <li><a href="#services" class="nav-services"><?php echo esc_html(get_theme_mod('menu_services_' . get_theme_mod('site_language', 'en'), __('Services', 'callamir'))); ?></a></li>
+                <li><a href="#blog" class="nav-blog"><?php echo esc_html(get_theme_mod('menu_blog_' . get_theme_mod('site_language', 'en'), __('Blog', 'callamir'))); ?></a></li>
+                <li><a href="#community" class="nav-community"><?php echo esc_html(get_theme_mod('menu_community_' . get_theme_mod('site_language', 'en'), __('Ask', 'callamir'))); ?></a></li>
+                <li><a href="#contact" class="nav-contact"><?php echo esc_html(get_theme_mod('menu_contact_' . get_theme_mod('site_language', 'en'), __('Contact', 'callamir'))); ?></a></li>
+            </ul>
         </div>
-        <!-- Navigate Button (Mobile Only) with Down Arrow -->
-        <button class="nav-button">
-            <span class="nav-text"><?php echo $lang === 'fa' ? 'بخش بعدی' : 'Next Section'; ?></span>
-            <span class="nav-arrow">↓</span>
-        </button>
-    </div>
+        <button class="nav-button"><span class="nav-text"><?php echo esc_html(get_theme_mod('nav_button_' . get_theme_mod('site_language', 'en'), __('Next Section', 'callamir'))); ?></span> <span class="nav-arrow">→</span></button>
+    </nav>

@@ -3,44 +3,49 @@
 <main>
     <!-- Hero Section -->
     <section class="hero" id="hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/hero-bg.jpg');">
-        <h1 id="hero-title"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'سادگی تکنولوژی برای سالمندان و کسب و کارهای کوچک' : 'Simplifying Tech for Seniors & Small Businesses'; ?></h1>
-        <p id="hero-text"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'پشتیبانی آی تی قابل اعتماد، دوستانه و آسان.' : 'Reliable, friendly, and easy IT support.'; ?></p>
-        <a href="#contact" class="hero-button" id="hero-btn" style="background-color: #004466;"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'دریافت پشتیبانی آی تی' : 'Get IT Support Now'; ?></a>
-        <p id="hero-subtext"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'من اینجا هستم تا تکنولوژی را برای سالمندان و کسب‌وکارهای کوچک آسان و بدون استرس کنم.' : 'I’m here to make technology easy and stress-free for seniors and small businesses.'; ?></p>
+        <h1 id="hero-title"><?php echo esc_html(get_theme_mod('hero_title_' . get_theme_mod('site_language', 'en'), __('Simplifying Tech for Seniors & Small Businesses', 'callamir'))); ?></h1>
+        <p id="hero-text"><?php echo esc_html(get_theme_mod('hero_text_' . get_theme_mod('site_language', 'en'), __('Reliable, friendly, and easy IT support.', 'callamir'))); ?></p>
+        <a href="#contact" class="hero-button" id="hero-btn"><?php echo esc_html(get_theme_mod('hero_btn_' . get_theme_mod('site_language', 'en'), __('Get IT Support Now', 'callamir'))); ?></a>
+        <p id="hero-subtext"><?php echo esc_html(get_theme_mod('hero_subtext_' . get_theme_mod('site_language', 'en'), __('I’m here to make technology easy and stress-free for seniors and small businesses.', 'callamir'))); ?></p>
     </section>
 
-   <!-- Subscribe Section -->
-<section class="subscribe" id="subscribe" style="background-color: #004466;">
-    <?php $subscribe_url = 'https://www.youtube.com/@callamir?sub_confirmation=1'; ?>
-    <h2 id="subscribe-title"><a href="<?php echo esc_url($subscribe_url); ?>"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'اشتراک' : 'Subscribe'; ?></a></h2>
-    <div class="youtube-container">
-        <div class="youtube-video">
-            <iframe src="https://www.youtube.com/embed/<?php echo esc_attr(get_theme_mod('youtube_video_id', 'dQw4w9WgXcQ')); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- Subscribe Section -->
+    <section class="subscribe" id="subscribe">
+        <h2 id="subscribe-title"><?php echo esc_html(get_theme_mod('subscribe_title_' . get_theme_mod('site_language', 'en'), __('Subscribe', 'callamir'))); ?></h2>
+        <div class="youtube-container">
+            <div class="youtube-video">
+                <iframe src="https://www.youtube.com/embed/<?php echo esc_attr(get_theme_mod('youtube_video_id', 'dQw4w9WgXcQ')); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <a href="<?php echo esc_url(get_theme_mod('youtube_channel_url', 'https://www.youtube.com/@callamir?sub_confirmation=1')); ?>" class="subscribe-button" id="subscribe-now"><?php echo esc_html(get_theme_mod('subscribe_now_' . get_theme_mod('site_language', 'en'), __('Subscribe Now', 'callamir'))); ?></a>
         </div>
-    </div>
-    <p><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'برای به‌روز ماندن با آخرین ویدیوهای ما اشتراک کنید!' : 'Subscribe to stay updated with our latest videos!'; ?></p>
-    <a href="<?php echo esc_url($subscribe_url); ?>" class="subscribe-button" id="subscribe-now" style="background-color: #ff0000;"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'اکنون اشتراک کنید' : 'Subscribe Now'; ?></a>
-</section>
+    </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <h2 id="services-title"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'خدمات' : 'Our Services'; ?></h2>
+        <h2 id="services-title"><?php echo esc_html(get_theme_mod('services_title_' . get_theme_mod('site_language', 'en'), __('Our Services', 'callamir'))); ?></h2>
         <div class="services-list">
             <?php
-            $services = array(
-                array('icon' => 'computer.svg', 'title_en' => 'Computer Setup', 'title_fa' => 'راه‌اندازی کامپیوتر', 'desc_en' => 'Get your computer set up quickly and easily.', 'desc_fa' => 'کامپیوتر خود را سریع و آسان راه‌اندازی کنید.'),
-                array('icon' => 'phone.svg', 'title_en' => 'Phone Support', 'title_fa' => 'پشتیبانی تلفن', 'desc_en' => 'Help with your smartphone, from basics to apps.', 'desc_fa' => 'کمک با گوشی هوشمند شما، از اصول اولیه تا برنامه‌ها.'),
-                array('icon' => 'wifi.svg', 'title_en' => 'Wi-Fi Help', 'title_fa' => 'کمک وای‌فای', 'desc_en' => 'Fix your internet connection issues.', 'desc_fa' => 'مشکلات اتصال اینترنت خود را برطرف کنید.'),
-                array('icon' => 'website.svg', 'title_en' => 'Website Creation', 'title_fa' => 'ایجاد وب‌سایت', 'desc_en' => 'Simple websites for your small business.', 'desc_fa' => 'وب‌سایت‌های ساده برای کسب‌وکار کوچک شما.')
-            );
-            $lang = isset($_GET['lang']) && $_GET['lang'] === 'fa' ? 'fa' : 'en';
-            foreach ($services as $service) {
-                $title = $lang === 'fa' ? $service['title_fa'] : $service['title_en'];
-                $desc = $lang === 'fa' ? $service['desc_fa'] : $service['desc_en'];
-                echo '<div class="service-item">';
-                echo '<a href="#" class="service-link"><img src="' . get_template_directory_uri() . '/images/' . $service['icon'] . '" alt="' . esc_attr($title) . '" class="service-icon">' . esc_html($title) . '</a>';
-                echo '<div class="service-desc">' . esc_html($desc) . '</div>';
-                echo '</div>';
+            for ($i = 1; $i <= 5; $i++) {
+                $name = get_theme_mod("service_name_$i", '');
+                $icon_type = get_theme_mod("service_icon_type_$i", 'image');
+                $icon_image = get_theme_mod("service_icon_image_$i", '');
+                $icon_fa = get_theme_mod("service_icon_fa_$i", '');
+                $icon_fa_custom = get_theme_mod("service_icon_fa_custom_$i", '');
+                $link = get_theme_mod("service_link_$i", '#');
+                $desc = get_theme_mod("service_desc_$i", '');
+                if ($name) {
+                    echo '<div class="service-item">';
+                    echo '<a href="' . esc_url($link) . '" class="service-link">';
+                    if ($icon_type === 'image' && $icon_image) {
+                        echo '<img src="' . esc_url($icon_image) . '" alt="' . esc_attr($name) . '" class="service-icon">';
+                    } elseif ($icon_type === 'fontawesome' && ($icon_fa || $icon_fa_custom)) {
+                        $fa_class = $icon_fa === 'custom' ? $icon_fa_custom : $icon_fa;
+                        echo '<i class="fa ' . esc_attr($fa_class) . ' service-icon"></i>';
+                    }
+                    echo esc_html($name) . '</a>';
+                    echo '<div class="service-desc">' . esc_html($desc) . '</div>';
+                    echo '</div>';
+                }
             }
             ?>
         </div>
@@ -48,94 +53,105 @@
 
     <!-- Blog Section -->
     <section class="blog" id="blog">
-        <h2 id="blog-title"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'وبلاگ' : 'Blog'; ?></h2>
-        <?php
-        $args = array('posts_per_page' => 3);
-        $blog_query = new WP_Query($args);
-        if ($blog_query->have_posts()) :
-            while ($blog_query->have_posts()) : $blog_query->the_post(); ?>
-                <article>
-                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                    <p><?php the_excerpt(); ?></p>
-                </article>
-            <?php endwhile;
+        <h2 id="blog-title"><?php echo esc_html(get_theme_mod('blog_title_' . get_theme_mod('site_language', 'en'), __('Blog', 'callamir'))); ?></h2>
+        <div class="blog-list">
+            <?php
+            $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+            $args = array('posts_per_page' => 10, 'paged' => $paged);
+            $blog_query = new WP_Query($args);
+            if ($blog_query->have_posts()) :
+                while ($blog_query->have_posts()) : $blog_query->the_post();
+                    $icon_type = get_post_meta(get_the_ID(), '_callamir_icon_type', true);
+                    $icon_image = get_post_meta(get_the_ID(), '_callamir_icon_image', true);
+                    $icon_fa = get_post_meta(get_the_ID(), '_callamir_icon_fa', true);
+                    $icon_fa_custom = get_post_meta(get_the_ID(), '_callamir_icon_fa_custom', true);
+                    ?>
+                    <div class="blog-item">
+                        <a href="<?php the_permalink(); ?>" class="blog-link">
+                            <?php
+                            if ($icon_type === 'image' && $icon_image) {
+                                echo '<img src="' . esc_url($icon_image) . '" alt="' . esc_attr(get_the_title()) . '" class="blog-icon">';
+                            } elseif ($icon_type === 'fontawesome' && ($icon_fa || $icon_fa_custom)) {
+                                $fa_class = $icon_fa === 'custom' ? $icon_fa_custom : $icon_fa;
+                                echo '<i class="fa ' . esc_attr($fa_class) . ' blog-icon"></i>';
+                            } else {
+                                echo '<i class="fa fa-file-text-o blog-icon"></i>';
+                            }
+                            ?>
+                            <h3><?php the_title(); ?></h3>
+                        </a>
+                        <div class="post-date"><?php _e('Posted on', 'callamir'); ?> <?php the_date(); ?></div>
+                        <div class="post-comments">
+                            <a href="<?php comments_link(); ?>"><?php comments_number(__('No Comments', 'callamir'), __('1 Comment', 'callamir'), __('% Comments', 'callamir')); ?></a>
+                        </div>
+                        <p><?php the_excerpt(); ?></p>
+                    </div>
+                <?php endwhile; ?>
+        </div>
+        <div class="blog-pagination">
+            <?php
+            echo paginate_links(array(
+                'total' => $blog_query->max_num_pages,
+                'current' => max(1, $paged),
+                'prev_text' => __('«', 'callamir'),
+                'next_text' => __('»', 'callamir'),
+            ));
             wp_reset_postdata();
-        else : ?>
-            <p><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'هیچ پستی یافت نشد.' : 'No posts found.'; ?></p>
+            ?>
+        </div>
+        <?php else : ?>
+            <p><?php _e('No posts found.', 'callamir'); ?></p>
         <?php endif; ?>
     </section>
 
     <!-- Community Q&A Section -->
     <section class="community" id="community">
-        <h2 id="community-title"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'پرسش و پاسخ جامعه' : 'Community Q&A'; ?></h2>
-        <form id="community-form">
-            <input type="text" name="submitter_name" placeholder="<?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'نام' : 'Name'; ?>" required>
-            <input type="email" name="submitter_email" placeholder="<?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'ایمیل (اختیاری)' : 'Email (optional)'; ?>">
-            <input type="tel" name="submitter_phone" placeholder="<?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'تلفن (اختیاری)' : 'Phone (optional)'; ?>">
-            <textarea name="question" placeholder="<?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'سوال خود را اینجا بپرسید...' : 'Ask your question here...'; ?>" required></textarea>
-            <button type="button" id="submit-question"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'ارسال سوال' : 'Submit Question'; ?></button>
-        </form>
-        <div class="questions-list">
+        <h2 id="community-title"><?php echo esc_html(get_theme_mod('community_title_' . get_theme_mod('site_language', 'en'), __('Ask a Question', 'callamir'))); ?></h2>
+        <div class="community-form">
             <?php
-            $args = array('post_type' => 'community_question', 'posts_per_page' => 5);
-            $questions_query = new WP_Query($args);
-            if ($questions_query->have_posts()) :
-                while ($questions_query->have_posts()) : $questions_query->the_post(); ?>
-                    <div class="question-item">
-                        <p class="question-text"><?php the_title(); ?></p>
-                        <?php if (get_the_content()) : ?>
-                            <p class="answer-text"><?php the_content(); ?></p>
-                        <?php endif; ?>
-                    </div>
-                <?php endwhile;
-                wp_reset_postdata();
-            else : ?>
-                <p><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'سوالی یافت نشد.' : 'No questions found.'; ?></p>
-            <?php endif; ?>
+            $shortcode = get_theme_mod('community_form_shortcode', '');
+            if ($shortcode) {
+                echo do_shortcode($shortcode);
+            } else {
+                echo '<p>' . esc_html__('Please configure a Community Form 7 shortcode in the Customizer.', 'callamir') . '</p>';
+            }
+            ?>
         </div>
-        <?php if ($questions_query->max_num_pages > 1) : ?>
-            <div class="pagination">
-                <?php
-                echo paginate_links(array(
-                    'total' => $questions_query->max_num_pages,
-                    'current' => max(1, get_query_var('paged')),
-                ));
-                ?>
-            </div>
-        <?php endif; ?>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <h2 id="contact-title"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'تماس با ما' : 'Contact Us'; ?></h2>
+        <h2 id="contact-title"><?php echo esc_html(get_theme_mod('contact_title_' . get_theme_mod('site_language', 'en'), __('Contact Us', 'callamir'))); ?></h2>
         <div class="contact-links">
-            <a href="https://wa.me/1234567890" class="contact-link whatsapp"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'واتساپ' : 'WhatsApp'; ?></a>
-            <a href="tel:+1234567890" class="contact-link cellphone"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'تلفن' : 'Call'; ?></a>
-            <a href="https://t.me/callamir" class="contact-link telegram"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'تلگرام' : 'Telegram'; ?></a>
-            <a href="sms:+1234567890" class="contact-link sms"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'پیامک' : 'SMS'; ?></a>
-            <a href="https://m.me/callamir" class="contact-link messenger"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'مسنجر' : 'Messenger'; ?></a>
-            <a href="https://instagram.com/callamir" class="contact-link instagram"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'اینستاگرام' : 'Instagram'; ?></a>
-            <a href="https://snapchat.com/add/callamir" class="contact-link snapchat"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'اسنپ‌چت' : 'Snapchat'; ?></a>
+            <?php
+            $contact_fields = array(
+                'whatsapp' => array('url' => 'https://wa.me/1234567890', 'icon' => 'fa-whatsapp', 'text' => 'whatsapp_text'),
+                'cellphone' => array('url' => 'tel:+1234567890', 'icon' => 'fa-phone', 'text' => 'cellphone_text'),
+                'telegram' => array('url' => 'https://t.me/callamir', 'icon' => 'fa-telegram', 'text' => 'telegram_text'),
+                'sms' => array('url' => 'sms:+1234567890', 'icon' => 'fa-comment', 'text' => 'sms_text'),
+                'messenger' => array('url' => 'https://m.me/callamir', 'icon' => 'fa-comment', 'text' => 'messenger_text'),
+                'instagram' => array('url' => 'https://instagram.com/callamir', 'icon' => 'fa-instagram', 'text' => 'instagram_text'),
+                'snapchat' => array('url' => 'https://snapchat.com/add/callamir', 'icon' => 'fa-snapchat', 'text' => 'snapchat_text'),
+            );
+            $lang = get_theme_mod('site_language', 'en');
+            foreach ($contact_fields as $field => $data) {
+                $custom_url = get_theme_mod("contact_$field", $data['url']);
+                if ($custom_url) {
+                    echo '<a href="' . esc_url($custom_url) . '" class="contact-link ' . esc_attr($field) . '"><i class="fa ' . esc_attr($data['icon']) . '"></i> ' . esc_html(get_theme_mod($data['text'] . '_' . $lang, __($data['text'], 'callamir'))) . '</a>';
+                }
+            }
+            ?>
         </div>
         <div class="contact-form">
-            <?php echo do_shortcode('[contact-form-7 id="123" title="Contact Form"]'); ?>
+            <?php
+            $shortcode = get_theme_mod('contact_form_shortcode', '');
+            if ($shortcode) {
+                echo do_shortcode($shortcode);
+            } else {
+                echo '<p>' . esc_html__('Please configure a Contact Form 7 shortcode in the Customizer.', 'callamir') . '</p>';
+            }
+            ?>
         </div>
-    </section>
-
-    <!-- Social Section -->
-    <section class="social" id="social" style="background-color: #004466;">
-        <h2 id="social-title"><?php echo (isset($_GET['lang']) && $_GET['lang'] === 'fa') ? 'شبکه‌های اجتماعی' : 'Social'; ?></h2>
-        <?php
-        $social_links = array(
-            'facebook' => 'https://facebook.com/callamir',
-            'twitter' => 'https://twitter.com/callamir',
-            'instagram' => 'https://instagram.com/callamir',
-            'linkedin' => 'https://linkedin.com/company/callamir'
-        );
-        foreach ($social_links as $platform => $url) {
-            echo '<a href="' . esc_url($url) . '">' . esc_html($platform) . '</a> ';
-        }
-        ?>
     </section>
 </main>
 
